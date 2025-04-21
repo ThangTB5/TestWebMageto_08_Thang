@@ -5,7 +5,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
-// Các phương thức định nghĩa
+// Các phương thức định nghĩa 08_Thang
 using MAssert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using MTestContext = Microsoft.VisualStudio.TestTools.UnitTesting.TestContext;
 using System.Threading;
@@ -72,11 +72,10 @@ namespace TestWebMageto_08_Thang
             // Gọi hàm đăng nhập
             method.Login_08_Thang(email, password);
 
-            // Gọi hàm lấy cảnh báo sau đăng nhập
-            string actualAlert = method.GetAlertMessage_08_Thang();
-
-            // Cảnh báo kỳ vọng từ hệ thống Magento
+            // Lấy lỗi từ field email (id="email-error")
+            string actualAlert = method.GetEmailErrorMessage_08_Thang();
             string expectedAlert = "This is a required field.";
+
 
             // So sánh kết quả
             MAssert.AreEqual(expectedAlert, actualAlert);
@@ -93,16 +92,14 @@ namespace TestWebMageto_08_Thang
         public void TC1_3_Login_That_Bai_Khong_Nhap_MatKhau_08_Thang()
         {
             // Đọc dữ liệu: email hợp lệ, password rỗng
-            string email = TestContext.DataRow[0].ToString();
-            string password = TestContext.DataRow[1].ToString();
+            string email = TestContext.DataRow[0] != null ? TestContext.DataRow[0].ToString() : "";
+            string password = TestContext.DataRow[1] != null ? TestContext.DataRow[1].ToString() : "";
 
             // Gọi hàm đăng nhập
             method.Login_08_Thang(email, password);
 
-            // Gọi hàm lấy cảnh báo lỗi
-            string actualAlert = method.GetAlertMessage_08_Thang();
-
-            // Giá trị cảnh báo mong muốn
+            // Lấy lỗi từ field password (id="pass-error")
+            string actualAlert = method.GetPasswordErrorMessage_08_Thang();
             string expectedAlert = "This is a required field.";
 
             // So sánh thực tế và mong đợi
