@@ -140,6 +140,59 @@ namespace TestWebMageto_08_Thang
         }
 
 
+        /// <summary>
+        /// Truy cập vào trang đăng ký tài khoản trên Magento
+        /// </summary>
+        public void TruyCapTrangDangKy_08_Thang()
+        {
+            driver_08_Thang.Navigate().GoToUrl("https://magento.softwaretestingboard.com/customer/account/create/");
+        }
+
+
+        // Thực hiện đăng ký tài khoản mới
+        public void Register_08_Thang(string fname, string lname, string email, string password, string confirmPassword)
+        {
+            TruyCapTrangDangKy_08_Thang();
+
+            driver_08_Thang.FindElement(By.Id("firstname")).SendKeys(fname);
+            Thread.Sleep(2000);
+            driver_08_Thang.FindElement(By.Id("lastname")).SendKeys(lname);
+            Thread.Sleep(2000);
+            driver_08_Thang.FindElement(By.Id("email_address")).SendKeys(email);
+            Thread.Sleep(2000);
+            driver_08_Thang.FindElement(By.Id("password")).SendKeys(password);
+            Thread.Sleep(2000);
+            driver_08_Thang.FindElement(By.Id("password-confirmation")).SendKeys(confirmPassword);
+
+            driver_08_Thang.FindElement(By.CssSelector("button[title='Create an Account']")).Click();
+            Thread.Sleep(3000);
+        }
+
+        // Lấy thông báo lỗi nếu không nhập email
+        public string GetEmailError_Register_08_Thang()
+        {
+            try
+            {
+                return driver_08_Thang.FindElement(By.Id("email_address-error")).Text;
+            }
+            catch (NoSuchElementException)
+            {
+                return "Không có thông báo lỗi email.";
+            }
+        }
+
+        // Lấy thông báo lỗi nếu không nhập mật khẩu
+        public string GetPasswordError_Register_08_Thang()
+        {
+            try
+            {
+                return driver_08_Thang.FindElement(By.Id("password-error")).Text;
+            }
+            catch (NoSuchElementException)
+            {
+                return "Không có thông báo lỗi mật khẩu.";
+            }
+        }
 
 
     }

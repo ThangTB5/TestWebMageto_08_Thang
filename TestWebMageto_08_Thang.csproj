@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="ChucNang1_Login_08_Thang.cs" />
     <Compile Include="ChucNang2_Search_08_Thang.cs" />
+    <Compile Include="ChucNang3_Register_08_Thang.cs" />
     <Compile Include="MagentoTestHelper_08_Thang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +107,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="RegisterData_08_Thang\TC3_1_Register_Thanh_Cong_08_Thang.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="RegisterData_08_Thang\TC3_2_Register_That_Bai_Khong_Nhap_Email_08_Thang.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="RegisterData_08_Thang\TC3_3_Register_That_Bai_Khong_Nhap_MatKhau_08_Thang.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SearchData_08_Thang\TC2_1_Search_Thanh_Cong_08_Thang.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
